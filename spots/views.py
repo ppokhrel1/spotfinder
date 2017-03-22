@@ -7,8 +7,9 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 
 
-global json_received = ''
+json_received = ''
 def upload(request):
+	global json_received
     if request.method == 'POST':
         json_received = json.loads(request.body.decode("utf-8"))
 
