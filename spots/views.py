@@ -8,18 +8,18 @@ from django.http import JsonResponse
 
 
 json_received = ''
+
 def upload(request):
 	global json_received
-    if request.method == 'POST':
-        json_received = json.loads(request.body.decode("utf-8"))
-
+	if request.method == "POST":
+		json_received = json.loads(request.body.decode("utf-8"))
         return HttpResponse("Got json data")
-    return HttpResponse("POST request not valid")
+    #return HttpResponse("POST request not valid")
 
 
 
 def get_data(request):
-    return JsonResponse(json_received, safe=False)
+	return JsonResponse(json_received, safe=False)
 
 
 
