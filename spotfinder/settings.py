@@ -116,8 +116,9 @@ except ImportError:
 STATIC_URL = '/static/'
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-import dj_database_url
-db_from_ev = dj_database_url.config()
+
+
+
+db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
