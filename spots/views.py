@@ -11,7 +11,7 @@ from django.http import JsonResponse
 
 
 
-json_received = {
+json_received1 = {
 	"results":[
 		{
 			"name" : "something",
@@ -43,7 +43,11 @@ def upload(request):
 
 def get_data(request):
 	global json_received
-	return JsonResponse(json_received, safe=False)
+	if json_received is None:
+		return JsonResponse(json_received, safe=False)
+	else:
+		return JsonResponse(json_received1, safe=False)
+
 
 
 
