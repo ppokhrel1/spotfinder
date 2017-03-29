@@ -15,7 +15,7 @@ json_received = {
 	"results":[
 		{
 			"name" : "something",
-			"color" : "red"
+			"color" : "green"
 		},
 		{
 			"name" : "something",
