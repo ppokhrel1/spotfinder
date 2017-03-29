@@ -10,24 +10,27 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 
 
-json_received = [
-	{
-		"name" : "something",
-		"color" : "red"
-	},
-	{
-		"name" : "something",
-		"color" : "red"
-	},
-	{
-		"name" : "something",
-		"color" : "red"
-	},
-	{
-		"name" : "something",
-		"color" : "red"
-	}
-]
+
+json_received = {
+	"results":[
+		{
+			"name" : "something",
+			"color" : "red"
+		},
+		{
+			"name" : "something",
+			"color" : "red"
+		},
+		{
+			"name" : "something",
+			"color" : "red"
+		},
+		{
+			"name" : "something",
+			"color" : "red"
+		}
+	]
+}
 
 def upload(request):
 	global json_received
