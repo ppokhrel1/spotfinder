@@ -43,7 +43,6 @@ def upload(request):
 
 def get_data(request):
 	global json_received
-	print request
 	return JsonResponse(json_received, safe=False)
 
 
