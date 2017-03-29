@@ -11,6 +11,6 @@ urlpatterns = [
     # url(r'^$', 'spotfinder.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r"^upload/", views.upload),
-    url(r"^/get_data/$", views.get_data),
+    url(r"^get_data/", views.get_data),
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
