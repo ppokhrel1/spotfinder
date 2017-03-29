@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core import serializers
 
 # Create your views here.
 
@@ -19,7 +20,7 @@ def upload(request):
 
 
 def get_data(request):
-	return JsonResponse(json_received, safe=False)
+	return JsonResponse(serializers.serialize('json', json_received), safe=False)
 
 
 
