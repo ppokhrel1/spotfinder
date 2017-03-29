@@ -20,6 +20,7 @@ def upload(request):
 
 
 def get_data(request):
+	global json_received
 	return JsonResponse(serializers.serialize('json', json_received), safe=False)
 
 
