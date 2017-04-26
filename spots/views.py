@@ -45,7 +45,7 @@ def upload(request):
 def get_data(request):
 	#global json_received
 	if json_received is None:
-		return JsonResponse(request.session['data'], safe=False)
+		return JsonResponse(request.session.get('data'), safe=False)
 	else:
 		return JsonResponse(json_received, safe=False)
 
