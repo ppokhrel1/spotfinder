@@ -11,7 +11,7 @@ from django.http import JsonResponse
 
 
 
-json_received1 = {
+json_received = {
 	"results":[
 		{
 			"name" : "something",
@@ -35,18 +35,20 @@ json_received1 = {
 def upload(request):
 	global json_received
 	if request.method == "POST":
-		#json_received = json.loads(request.body.decode("utf-8"))
-		request.session['data'] = json.loads(request.body.decode("utf-8"))
+		request.sessions['json_received'] = json.loads(request.body.decode("utf-8"))
+
         return HttpResponse("Got json data")
     #return HttpResponse("POST request not valid")
 
 
 
 def get_data(request):
-	#global json_received
+	global json_received
 	if json_received is None:
-		return JsonResponse(request.session.get('data'), safe=False)
+
+		return JsonResponse(json_received, safe=False)
 	else:
+		print json_received
 		return JsonResponse(json_received, safe=False)
 
 
