@@ -35,18 +35,19 @@ json_received1 = {
 def upload(request):
 	global json_received
 	if request.method == "POST":
-		json_received = json.loads(request.body.decode("utf-8"))
+		#json_received = json.loads(request.body.decode("utf-8"))
+		request.session['data'] = json.loads(request.body.decode("utf-8"))
         return HttpResponse("Got json data")
     #return HttpResponse("POST request not valid")
 
 
 
 def get_data(request):
-	global json_received
+	#global json_received
 	if json_received is None:
-		return JsonResponse(json_received, safe=False)
+		return JsonResponse(request.session['data'], safe=False)
 	else:
-		return JsonResponse(json_received1, safe=False)
+		return JsonResponse(json_received, safe=False)
 
 
 
