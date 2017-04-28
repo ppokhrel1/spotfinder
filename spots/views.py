@@ -36,7 +36,7 @@ def upload(request):
     global json_received
     if request.method == "POST":
         json_received = json.loads(request.body.decode("utf-8"))
-        request.session['value'] = json_received
+        request.session['results'] = json_received
         return HttpResponse(json_received)
     else:
     	return HttpResponse("POST request not valid")
@@ -46,8 +46,8 @@ def upload(request):
 
 def get_data(request):
 	global json_received
-	if request.session['value'] is None:
-		print request.session['value']
+	if request.session['results'] is None:
+		print request.session['results']
 		return JsonResponse(request.session['value'], safe=False)
 	else:
 		print json_received
