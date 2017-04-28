@@ -38,11 +38,16 @@ from models import Spot
 from django.core import serializers
 from forms import SpotForm
 from os.path import join
+def ascii_encode_dict(data):
+    ascii_encode = lambda x: x.encode('ascii') if isinstance(x, unicode) else x 
+    return dict(map(ascii_encode, pair) for pair in data.items())
+
+
 @csrf_exempt
 def upload(request):
     #global json_received
     if request.method == "POST":
-		data = request.body.decode("utf-8")
+		data = json.loads(request.body.decode("utf-8"))
 		print data
 		#d = Spot(report = str(data) )
 		#d.report = str(data)
@@ -68,13 +73,14 @@ def to_utf8(d):
     else:
         return d
 
+
 def get_data(request):
 	print "puta"
 	#with open('data.json', 'w') as f:
 	#	data = json.load(f)
 	f = open('file.json')
 	print "yessica is a bitch"
-	data = json.load(to_utf8(f))
+	data = json.load(f)
 	print data
 
 	print "nothing"
