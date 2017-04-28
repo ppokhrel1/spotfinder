@@ -74,7 +74,7 @@ def get_data(request):
 	print data
 
 	print "nothing"
-	return JsonResponse(data, safe=False)
+	return JsonResponse(data, safe=True)
 	#	return HttpResponse("No json data Bitch")
 	#return HttpResponse("No json data Bitch")
 
