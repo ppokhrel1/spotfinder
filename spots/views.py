@@ -41,6 +41,7 @@ def upload(request):
         settings.JSON = json.loads(request.body.decode("utf-8"))
         return HttpResponse(settings.JSON)
     else:
+    	settings.JSON = json.loads(request.body.decode("utf-8"))
     	return HttpResponse("POST request not valid")
     return HttpResponse("No json data")
 
