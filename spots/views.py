@@ -47,7 +47,8 @@ def upload(request):
 
 
 def get_data(request):
-	data = Data.objects.all()[-1: -5]
+	data = Data.objects.all()
+	data = Data[len(data) - 4 : len(data)]
 	results = {}
 	results['results'] = data
 	return JsonResponse(results, safe=False)
