@@ -48,7 +48,6 @@ def get_data(request):
 	global json_received
 	if request.session.get('results'):
 		#print request.session['results']
-		json_received = request.session.get('results')
 		return JsonResponse(json_received, safe=False)
 	else:
 		#print json_received
