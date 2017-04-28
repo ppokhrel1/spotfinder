@@ -54,7 +54,7 @@ def upload(request):
 		#d.save()
 		#data = yaml.safe_load(data)
 		with open("file.json", 'w') as f:
-			json.dump(data, f)
+			json.dump(data, f, encoding="utf-8")
 		return JsonResponse(data, safe=False)
     else:
     	#data = json.loads(request.body.decode("utf-8"))
@@ -70,7 +70,7 @@ def get_data(request):
 	#	data = json.load(f)
 	f = open('file.json')
 	print "yessica is a bitch"
-	data = json.load(f, object_hook=ascii_encode_dict)
+	data = json.load(f, object_hook=ascii_encode_dict, encoding="utf-8")
 	print data
 
 	print "nothing"
