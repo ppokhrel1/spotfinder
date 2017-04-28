@@ -47,7 +47,7 @@ def ascii_encode_dict(data):
 def upload(request):
     #global json_received
     if request.method == "POST":
-		data = json.loads(request.body.decode("utf-8"), object_hook=ascii_encode_dict)
+		data = json.loads(request.body, object_hook=ascii_encode_dict)
 		print data
 		#d = Spot(report = str(data) )
 		#d.report = str(data)
