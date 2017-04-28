@@ -5,7 +5,7 @@ from django.core import serializers
 
 # Create your views here.
 
-import json
+import simplejson as json
 from django.http import HttpResponse
 from django.http import JsonResponse
 
@@ -42,16 +42,17 @@ def ascii_encode_dict(data):
     ascii_encode = lambda x: x.encode('ascii') if isinstance(x, unicode) else x 
     return dict(map(ascii_encode, pair) for pair in data.items())
 
-
+import yaml
 @csrf_exempt
 def upload(request):
     #global json_received
     if request.method == "POST":
-		data = json.loads(request.body, object_hook=ascii_encode_dict)
+		data = json.loads(request.body.decode("utf-8"), object_hook=ascii_encode_dict)
 		print data
 		#d = Spot(report = str(data) )
 		#d.report = str(data)
 		#d.save()
+		#data = yaml.safe_load(data)
 		with open("file.json", 'w') as f:
 			json.dump(data, f)
 		return JsonResponse(data, safe=False)
@@ -61,17 +62,6 @@ def upload(request):
 		#	json.dump(data, outfile)
     	return HttpResponse("POST request not valid")
     return HttpResponse("No json data")
-
-
-def to_utf8(d):
-    if type(d) is dict:
-        result = {}
-        for key, value in d.items():
-            result[to_utf8(key)] = to_utf8(value)
-    elif type(d) is unicode:
-        return d.encode('utf8')
-    else:
-        return d
 
 
 def get_data(request):

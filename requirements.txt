@@ -17,3 +17,4 @@ whitenoise
 dj-database-url
 psycopg2
 jsonfield
+simplejson
