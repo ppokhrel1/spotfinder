@@ -80,7 +80,7 @@ def get_data(request):
 	#	data = json.load(f)
 	f = open('file.json')
 	print "yessica is a bitch"
-	data = json.load(f)
+	data = json.load(f, object_hook=ascii_encode_dict)
 	print data
 
 	print "nothing"
