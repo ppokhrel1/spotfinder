@@ -68,11 +68,11 @@ def get_data(request):
 	print "puta"
 	#with open('data.json', 'w') as f:
 	#	data = json.load(f)
-	f = open('file.json')
+	f = open('file.json').read()
 	print "yessica is a bitch"
-	data = json.load(f, object_hook=ascii_encode_dict, encoding="utf-8")
+	data = json.loads(f, object_hook=ascii_encode_dict, encoding="utf-8")
 	print data
-
+	#data = json.dumps(data)
 	print "nothing"
 	return JsonResponse(data, safe=False)
 	#	return HttpResponse("No json data Bitch")
