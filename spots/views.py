@@ -58,6 +58,15 @@ def upload(request):
     return HttpResponse("No json data")
 
 
+def to_utf8(d):
+    if type(d) is dict:
+        result = {}
+        for key, value in d.items():
+            result[to_utf8(key)] = to_utf8(value)
+    elif type(d) is unicode:
+        return d.encode('utf8')
+    else:
+        return d
 
 def get_data(request):
 	print "puta"
@@ -65,8 +74,9 @@ def get_data(request):
 	#	data = json.load(f)
 	f = open('file.json')
 	print "yessica is a bitch"
-	data = json.load(f)
-	print data 
+	data = json.load(to_utf8(f))
+	print data
+
 	print "nothing"
 	return JsonResponse(data, safe=False)
 	#	return HttpResponse("No json data Bitch")
