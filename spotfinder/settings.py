@@ -115,6 +115,10 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'userfiles')
+MEDIA_URL = '/files/'  # Note they don't have to be identical names
+
 #db_from_env = dj_database_url.config()
 #DATABASES['default'].update(db_from_env)
 

@@ -12,7 +12,7 @@ import collections
 
 class Spot(models.Model):
 	#names = models.CharField(max_length = 100, default = '')
-	report = models.CharField(max_length = 500, default = '')
-	#report = models.FileField(db_index=True, upload_to='not_used')
+	#report = models.CharField(max_length = 500, default = '')
+	report = models.FileField(db_index=True, upload_to='not_used')
 #class Data(models.Model):
 #	mydata = models.ManyToManyField(Spot)
