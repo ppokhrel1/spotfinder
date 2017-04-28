@@ -96,7 +96,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-import dj_database_url
+#import dj_database_url
 #DATABASES['default'] = dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -119,24 +119,3 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #DATABASES['default'].update(db_from_env)
 
 #SESSION_ENGINE = "django.contrib.sessions.backends.cache" 
-
-JSON = {
-    "results":[
-        {
-            "name" : "something",
-            "color" : "green"
-        },
-        {
-            "name" : "something",
-            "color" : "red"
-        },
-        {
-            "name" : "something",
-            "color" : "red"
-        },
-        {
-            "name" : "something",
-            "color" : "red"
-        }
-    ]
-}
