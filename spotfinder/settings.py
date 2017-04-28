@@ -118,3 +118,25 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #db_from_env = dj_database_url.config()
 #DATABASES['default'].update(db_from_env)
 
+#SESSION_ENGINE = "django.contrib.sessions.backends.cache" 
+
+JSON = {
+    "results":[
+        {
+            "name" : "something",
+            "color" : "green"
+        },
+        {
+            "name" : "something",
+            "color" : "red"
+        },
+        {
+            "name" : "something",
+            "color" : "red"
+        },
+        {
+            "name" : "something",
+            "color" : "red"
+        }
+    ]
+}
