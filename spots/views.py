@@ -52,7 +52,8 @@ def get_data(request):
 		return JsonResponse(json_received, safe=False)
 	else:
 		#print json_received
-		json_received = request.session.get('results')
+		global json_received
+		#json_received = request.session.get('results')
 		return JsonResponse(json_received, safe=False)
 
 
