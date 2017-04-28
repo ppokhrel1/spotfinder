@@ -48,10 +48,10 @@ def get_data(request):
 	global json_received
 	if request.session['results'] is None:
 		print request.session['results']
-		return JsonResponse(request.session['value'], safe=False)
+		return JsonResponse(request.session['results'], safe=False)
 	else:
 		print json_received
-		return JsonResponse(request.session['value'], safe=False)
+		return JsonResponse(request.session['results'], safe=False)
 
 
 
