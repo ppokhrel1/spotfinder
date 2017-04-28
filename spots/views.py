@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 
 
-'''
+
 json_received = {
 	"results":[
 		{
@@ -31,27 +31,27 @@ json_received = {
 		}
 	]
 }
-'''
-from .helpers import create_or_update_and_get
-from .models import *
 
 def upload(request):
-	if request.method == "POST":
-		json_received["results"] = json.loads( request.body.decode("utf-8") )
-		objects = create_or_update_and_get(Data, json_received)
-		return HttpResponse("Got json data")
-	else:
-		return HttpResponse("No json data")
-	return HttpResponse("POST request not valid")
+    global json_received
+    if request.method == "POST":
+        #request.sessions['json_received'] = json.loads(request.body.decode("utf-8"))
+        json_received = json.loads(request.body.decode("utf-8"))
+        return HttpResponse("Got json data")
+    else:
+    	return HttpResponse("No json data")
+    #return HttpResponse("POST request not valid")
 
 
 
 def get_data(request):
-	data = Data.objects.all()
-	data = Data[len(data) - 4 : len(data)]
-	results = {}
-	results['results'] = data
-	return JsonResponse(results, safe=False)
+	global json_received
+	if json_received is None:
+		return JsonResponse(json_received, safe=False)
+	else:
+		print json_received
+		return JsonResponse(json_received, safe=False)
+
 
 
 
