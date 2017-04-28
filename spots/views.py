@@ -44,14 +44,11 @@ def upload(request):
     if request.method == "POST":
 		data = request.body.decode("utf-8")
 		print data
-		spot_form = SpotForm(request.POST, request.FILES)
-		print "fucking spot"
-		if spot_form.is_valid():
-			#spot = Spot()
-			#spot.report = spot_form.cleaned_data["report"]
-			#print data
-			#spot.save()
-			spot_form.save()
+		#d = Spot(report = str(data) )
+		#d.report = str(data)
+		#d.save()
+		with open("file.json", 'w') as f:
+			json.dump(data, f)
 		return JsonResponse(data, safe=False)
     else:
     	#data = json.loads(request.body.decode("utf-8"))
@@ -63,26 +60,17 @@ def upload(request):
 
 
 def get_data(request):
-	#global json_received
-	#with open('data.txt') as json_file:  
-	#	data = json.loads(json_file)
-	#data = request.session.get('fav_color')
-	data = Spot.objects.all()[0]
-	print data
+	print "puta"
+	#with open('data.json', 'w') as f:
+	#	data = json.load(f)
+	f = open('file.json')
+	print "yessica is a bitch"
+	data = json.load(f)
+	print data 
+	print "nothing"
 	return JsonResponse(data, safe=False)
-	'''if data is not None:
-		#print request.session['results']
-		#json_received = request.session.get('results')
-		j_obj = json.load(data)
-		print j_obj
-		#return JsonResponse(data, safe=False)
-	else:
-		#print json_received
-		#json_received = request.session.get('results')
-		#return JsonResponse(data, safe=False)
-		pass
-	return HttpResponse("No json data")
-	'''
+	#	return HttpResponse("No json data Bitch")
+	#return HttpResponse("No json data Bitch")
 
 
 

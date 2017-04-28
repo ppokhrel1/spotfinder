@@ -7,6 +7,6 @@ r=requests.post(url, data=json.dumps(data), headers=headers)
 print r.text
 
 
-with open('views.py', 'rb') as f:
-    r = requests.post('http://127.0.0.1:8000/upload/', files={'views.py': f})
-    print r
+#with open('views.py', 'rb') as f:
+#   r = requests.post('http://spotfinder.herokuapp.com/upload/', files={'views.py': f})
+#    print r.content
