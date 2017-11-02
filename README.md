@@ -1,4 +1,5 @@
 # spotfinder
+Created by Pujan Pokhrel and Yessica Carrasco as senior project for University of New Orleans.
 
 `
 For uploading the json, make a request to http://spotfinder.herokuapp.com/upload
